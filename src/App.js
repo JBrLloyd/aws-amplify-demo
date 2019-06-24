@@ -1,6 +1,12 @@
 import React from 'react';
+import { withAuthenticator } from 'aws-amplify-react'; // or 'aws-amplify-react-native';
+import Amplify from 'aws-amplify';
 import logo from './logo.svg';
 import './App.css';
+// Get the aws resources configuration parameters
+import awsconfig from './aws-exports'; // if you are using Amplify CLI
+
+Amplify.configure(awsconfig);
 
 function App() {
   return (
@@ -23,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App, { includeGreetings: true });
